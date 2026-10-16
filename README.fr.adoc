@@ -33,7 +33,7 @@ Ajouter dans votre `shard.yml` :
 dependencies:
   asciicrystal-mathematical:
     github: aloli-crystal/asciicrystal-mathematical
-    version: "~> 0.3.5.3"
+    version: "~> 0.3.5.6"
 ----
 
 Puis executer `shards install`.

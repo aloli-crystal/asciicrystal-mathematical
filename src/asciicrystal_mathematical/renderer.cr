@@ -10,7 +10,7 @@ module AsciicrystalMathematical
     # Returns the rendered HTML string, or nil if the CLI is not available
     # or rendering fails.
     def self.render_server_katex(expression : String, display_mode : Bool = false) : String?
-      return nil if expression.strip.empty?
+      return if expression.strip.empty?
 
       args = ["katex"]
       args << "--display-mode" if display_mode
@@ -33,10 +33,8 @@ module AsciicrystalMathematical
 
       if status.success?
         output.strip
-      else
-        nil
       end
-    rescue ex : IO::Error | File::NotFoundError
+    rescue IO::Error | File::NotFoundError
       # katex CLI not available
       nil
     end
@@ -52,7 +50,7 @@ module AsciicrystalMathematical
       process.output.gets_to_end
       process.error.gets_to_end
       process.wait.success?
-    rescue ex : IO::Error | File::NotFoundError
+    rescue IO::Error | File::NotFoundError
       false
     end
 
