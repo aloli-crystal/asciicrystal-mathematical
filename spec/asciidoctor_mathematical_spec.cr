@@ -1,9 +1,11 @@
 require "./spec_helper"
+require "yaml"
 
 describe AsciicrystalMathematical do
   describe "VERSION" do
     it "has a version" do
-      AsciicrystalMathematical::VERSION.should eq("0.3.5.6")
+      yml = YAML.parse(File.read(File.join(__DIR__, "..", "shard.yml")))
+      AsciicrystalMathematical::VERSION.should eq(yml["version"].as_s)
     end
 
     it "tracks upstream version" do
